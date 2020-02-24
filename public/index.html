@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To Do List</title>
+    <script src="./js/bundle.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <div id="app">
+      <h1>ToDo's</h1>
+      <form @submit.prevent="saveNewItem">
+        <input type="text" id="new-item" v-model="newItem" required>
+        <label for="radio-high">High</label>
+        <input type="radio" id="high-radio" value="high" v-model="priority" required>
+        <label for="low-radio">Low</label>
+        <input type="radio" id="low-radio" value="low" v-model="priority">
+        <button>Save item</button>
+      </form>
+      <button @click="deleteAll" id="deleteall">Delete all</button>
+
+
+
+      <ul>
+        <li v-for="todo in todos" :class="todo.priority === 'high' ? 'high' : 'low' ">
+          <button @click="deleteSingle" class="fa fa-trash-o"> Delete</button>
+          <span>{{ todo.name }}</span>
+        </li>
+      </ul>
+
+    </div>
+
+  </body>
+</html>
