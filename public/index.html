@@ -23,8 +23,8 @@
 
 
       <ul>
-        <li v-for="todo in todos" :class="todo.priority === 'high' ? 'high' : 'low' ">
-          <button @click="deleteSingle" class="fa fa-trash-o"> Delete</button>
+        <li v-for="(todo,index) in todos" :class="todo.priority === 'high' ? 'high' : 'low' ">
+          <button @click="deleteSingle(index)" class="fa fa-trash-o"> Delete</button>
           <span>{{ todo.name }}</span>
         </li>
       </ul>
